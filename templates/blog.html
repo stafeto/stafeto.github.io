@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ section.title }}</h1>
+{{ section.content | safe }}
+{% if section.pages | length > 0 %}
+<ul class="posts">
+{% for p in section.pages %}
+  <li><time datetime="{{ p.date }}">{{ p.date | date(format="%-d %B %Y") }}</time>
+  <a href="{{ p.permalink }}">{{ p.title }}</a>
+  {% if p.description %}<span class="summary">{{ p.description }}</span>{% endif %}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No posts yet. The <a href="{{ get_url(path='atom.xml') }}">feed</a> will carry the first one.</p>
+{% endif %}
+{% endblock content %}

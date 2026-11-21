@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page and page.title %}{% set page_title = page.title ~ " | " ~ config.title %}{% elif section and section.title and section.path != "/" %}{% set page_title = section.title ~ " | " ~ config.title %}{% else %}{% set page_title = config.title ~ ": a small capability microkernel in Rust for AArch64" %}{% endif %}
+{%- if page and page.description %}{% set page_desc = page.description %}{% elif section and section.description %}{% set page_desc = section.description %}{% else %}{% set page_desc = config.description %}{% endif %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc }}">
+<meta name="color-scheme" content="light dark">
+{% if page or section %}<link rel="canonical" href="{{ current_url }}">
+<meta property="og:url" content="{{ current_url }}">
+{% endif %}<link rel="icon" href="{{ get_url(path='favicon.svg') }}" type="image/svg+xml">
+<link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml') }}">
+<meta property="og:site_name" content="{{ config.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:type" content="{% if page and page.date %}article{% else %}website{% endif %}">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='giallo-light.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='giallo-dark.css') }}" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="{{ get_url(path='/', trailing_slash=true) }}"><img src="{{ get_url(path='favicon.svg') }}" alt="" width="24" height="24">stafeto</a>
+    <nav aria-label="Main">
+      <a href="{{ get_url(path='try/', trailing_slash=true) }}">Try it</a>
+      <a href="{{ get_url(path='blog/', trailing_slash=true) }}">Blog</a>
+      <a href="{{ config.extra.releases }}">Releases</a>
+      <a href="{{ config.extra.repo }}">Source</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+{% block content %}{% endblock content %}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 {{ config.extra.author }}. The text of this site is licensed under
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; the code samples on it are licensed under the
+    <a href="https://opensource.org/license/mit">MIT licence</a>. See the
+    <a href="{{ config.extra.site_repo }}/blob/main/LICENSE">LICENSE</a> file of the site.
+    The stafeto system has its own licences, listed in <a href="{{ config.extra.repo }}#license">its repository</a>.</p>
+    <p><a href="{{ get_url(path='atom.xml') }}">Feed</a> &middot; <a href="{{ config.extra.repo }}">Source of stafeto</a> &middot; <a href="{{ config.extra.releases }}">Releases</a></p>
+  </div>
+</footer>
+</body>
+</html>

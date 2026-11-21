@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Page not found</h1>
+<p>This address has no page. Try the <a href="{{ get_url(path='/', trailing_slash=true) }}">home page</a>, the <a href="{{ get_url(path='try/', trailing_slash=true) }}">five-minute start</a> or the <a href="{{ get_url(path='blog/', trailing_slash=true) }}">blog</a>.</p>
+{% endblock content %}

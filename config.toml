@@ -1,0 +1,24 @@
+base_url = "https://stafeto.github.io"
+title = "stafeto"
+description = "A small capability microkernel in Rust for AArch64, with a POSIX layer that runs ready-made programs."
+default_language = "en"
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+build_search_index = false
+compile_sass = false
+taxonomies = []
+
+[markdown.highlighting]
+light_theme = "github-light"
+dark_theme = "github-dark"
+style = "class"
+error_on_missing_language = false
+
+[extra]
+repo = "https://github.com/stafeto/stafeto"
+site_repo = "https://github.com/stafeto/stafeto.github.io"
+releases = "https://github.com/stafeto/stafeto/releases"
+latest_version = "0.6.0"
+latest_release = "https://github.com/stafeto/stafeto/releases/tag/v0.6.0"
+docs = "https://github.com/stafeto/stafeto/tree/main/docs"
+author = "Sergey Subbotin"
