@@ -8,7 +8,7 @@ stafeto is a small capability microkernel written in Rust for AArch64, built for
 
 ## Latest release
 
-[stafeto 0.6.0](https://github.com/stafeto/stafeto/releases/tag/v0.6.0) connects POSIX programs to the data volume, which they see as `/data`, and starts the graphics stack of the composition service (a frame clock, OpenWF Display and the scene session of OpenWF Composition). Read the [release notes on GitHub](https://github.com/stafeto/stafeto/releases/tag/v0.6.0).
+[stafeto 0.6.1](https://github.com/stafeto/stafeto/releases/tag/v0.6.1) repairs the data volume after a power cut in seconds. It is a patch release of [0.6.0](https://github.com/stafeto/stafeto/releases/tag/v0.6.0), which connects POSIX programs to the data volume, which they see as `/data`, and starts the graphics stack of the composition service (a frame clock, OpenWF Display and the scene session of OpenWF Composition).
 
 ## Where to go
 

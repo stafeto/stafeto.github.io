@@ -4,23 +4,23 @@ description = "Run stafeto from a release archive on your own machine, play Doom
 template = "page.html"
 +++
 
-stafeto 0.6.0 is experimental. Keep nothing secret on it. There are two ways to try it: a release archive that runs in QEMU on your machine, and a public image for AWS EC2 Graviton.
+stafeto 0.6.1 is experimental. Keep nothing secret on it. There are two ways to try it: a release archive that runs in QEMU on your machine, and a public image for AWS EC2 Graviton.
 
 ## On your machine
 
 You need QEMU. On macOS, `brew install qemu` installs it.
 
-1. Download one of two archives from the [0.6.0 release](https://github.com/stafeto/stafeto/releases/tag/v0.6.0).
+1. Download one of two archives from the [0.6.1 release](https://github.com/stafeto/stafeto/releases/tag/v0.6.1).
 2. Unpack it and run `./run.sh`.
 
 | Archive | What it holds |
 |---|---|
-| `stafeto-0.6.0-aarch64-virt-base.tar.xz` | The shell, the package tool and the base packages. |
-| `stafeto-0.6.0-aarch64-virt-full.tar.xz` | Every package, including the network programs and Doom. It needs 1024M of memory, which its `run.sh` passes. |
+| `stafeto-0.6.1-aarch64-virt-base.tar.xz` | The shell, the package tool and the base packages. |
+| `stafeto-0.6.1-aarch64-virt-full.tar.xz` | Every package, including the network programs and Doom. It needs 1024M of memory, which its `run.sh` passes. |
 
 ```sh
-tar xf stafeto-0.6.0-aarch64-virt-full.tar.xz
-cd stafeto-0.6.0-aarch64-virt-full
+tar xf stafeto-0.6.1-aarch64-virt-full.tar.xz
+cd stafeto-0.6.1-aarch64-virt-full
 ./run.sh              # QEMU with emulation, any host
 ./run.sh --cpus 4     # four CPUs
 ./run.sh --hvf        # hardware virtualization on a Mac with Apple silicon
@@ -40,7 +40,7 @@ The game opens in the window, which takes the keys while it is in focus (click t
 
 ## On AWS
 
-The public image of 0.6.0 is the AMI `ami-04d65173ce457da3c` in `eu-central-1` (name `stafeto-0.6.0`, arm64, UEFI). It holds:
+The public image of 0.6.1 is the AMI `ami-0f37883dae9f43576` in `eu-central-1` (name `stafeto-0.6.1`, arm64, UEFI). It holds:
 
 - nginx on ports 80 and 443 (TLS 1.3, HTTP/2). The certificate is self-signed and made at every boot, so use `curl -k`.
 - `nginx-fast` on port 8080, which runs on a user-space FreeBSD network stack (F-Stack) over the ENA device.
@@ -62,14 +62,14 @@ With the AWS CLI the launch looks like this (replace the placeholders):
 ```sh
 aws ec2 run-instances \
   --region eu-central-1 \
-  --image-id ami-04d65173ce457da3c \
+  --image-id ami-0f37883dae9f43576 \
   --instance-type t4g.small \
   --key-name YOUR-KEY-PAIR \
   --security-group-ids sg-XXXXXXXX \
   --associate-public-ip-address
 ```
 
-The AMI id comes from the notes of 0.6.0, and the steps above are those of the notes of 0.5.1.
+The AMI id comes from the notes of 0.6.1, and the steps above are those of the notes of 0.5.1.
 
 ### The data volume
 
@@ -83,4 +83,4 @@ The instance itself is billed to your account at the normal EC2 price of a `t4g.
 
 ## Where to read more
 
-The release notes of [0.6.0](https://github.com/stafeto/stafeto/releases/tag/v0.6.0) and the repository documentation (`docs/releases/0.5.1.md` for the AWS image, `docs/doom.md` for Doom) have the details and the known limits.
+The release notes of [0.6.1](https://github.com/stafeto/stafeto/releases/tag/v0.6.1) and [0.6.0](https://github.com/stafeto/stafeto/releases/tag/v0.6.0) and the repository documentation (`docs/releases/0.5.1.md` for the AWS image, `docs/doom.md` for Doom) have the details and the known limits.
